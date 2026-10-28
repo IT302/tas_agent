@@ -10,6 +10,10 @@ License:        MIT
 URL:            https://github.com/hpe/tas_agent
 Source0:        %{name}-%{version}.tar.gz
 
+# The release build has no debug symbols, so a debuginfo package would be
+# empty. RPM 6 (Ubuntu 26.04) fails the build on an empty debuginfo package.
+%global debug_package %{nil}
+
 BuildRequires:  cargo rust pkg-config openssl-devel
 Requires:       systemd cryptsetup
 
